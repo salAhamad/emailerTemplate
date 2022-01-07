@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emailer Template</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Berkshire+Swash&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root{
+            --col-width: 8.33334%;
+            --gap: 10px;
+        }
+
+        /* common parts */
+        img {max-width: 100%;}
+        a {color: black; text-decoration: none;}
+        h1 {font-size: 36px;}
+        h2 {font-size: 30px;}
+        h3 {font-size: 26px;}
+        h4 {font-size: 20px;}
+        h5 {font-size: 16px;}
+        h6 {font-size: 12px;}
+        h1:not(:last-child), h2:not(:last-child), h3:not(:last-child), h4:not(:last-child), h5:not(:last-child), h6:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+
+        .fz-10 { font-size: 10px; line-height: 16px; }
+        .fz-12 { font-size: 12px; line-height: 20px; }
+        .fz-13 { font-size: 13px; line-height: 24px; }
+        .fz-14 { font-size: 14px; line-height: 24px; }
+        .fz-15 { font-size: 15px; line-height: 24px; }
+        .fz-16 { font-size: 16px; line-height: 26px; }
+        .fz-18 { font-size: 18px; line-height: 20px; }
+        .fz-20 { font-size: 20px; line-height: 28px; }
+        .fz-22 { font-size: 22px; line-height: 30px; }
+        .fz-24 { font-size: 24px; line-height: 32px; }
+        .fz-26 { font-size: 26px; line-height: 36px; }
+        .fz-28 { font-size: 28px; line-height: 34px; }
+        .fz-30 { font-size: 30px; line-height: 36px; }
+        .fz-32 { font-size: 32px; line-height: 40px; }
+        .fz-34 { font-size: 34px; line-height: 42px; }
+        .fz-36 { font-size: 36px; line-height: 44px; }
+        .fz-38 { font-size: 38px; line-height: 48px; }
+        .fz-40 { font-size: 40px; line-height: 50px; }
+        .fz-50 { font-size: 50px; line-height: 60px; }
+        .line-height-normal {line-height: normal;}
+
+
+        /* colors */
+        .orange-color {color: #EC7601;}
+        .orange-bg-color {background-color: #EC7601;}
+        
+        .light-grey-color {color: #f5f5f5;}
+        .light-grey-bg-color {background-color: #f5f5f5;}
+
+        .semi-light-grey-color {color: #cccccc;}
+        .semi-light-grey-bg-color {background-color: #cccccc;}
+
+        .dark-grey-color {color: #666666;}
+        .dark-grey-bg-color {background-color: #666666;}
+        
+        .black-color {color: #101010;}
+        .black-bg-color {background-color: #101010;}
+        
+        .white-color {color: #ffffff;}
+        .white-bg-color {background-color: #ffffff;}
+
+        /* fonts */
+        .font-family-petit { font-family: 'Petit Formal Script', cursive; }
+        .font-family-roboto { font-family: 'Roboto', sans-serif; }
+        .font-family-roboto-condensed { font-family: 'Roboto Condensed', sans-serif; }
+        .font-family-barlow {font-family: 'Barlow', sans-serif; }
+
+        /* additional classes */
+        .bgBaseColor {background-color: #FFF2E8;}
+        .whiteBgColor {background-color: #ffffff;}
+        .blackBgColor {background-color: #000000;}
+        .darkGray {background-color: #555555;}
+        .lightGray {background-color: #cccccc;}
+
+        .d-inline-block {display: inline-block;}
+        .d-inline-flex {display: inline-flex;}
+        .d-flex {display: flex;}
+        .d-table {display: table;}
+        .justify-content-start {justify-content: flex-start;}
+        .justify-content-center {justify-content: center;}
+        .justify-content-between {justify-content: space-between;}
+        .align-items-start {align-items: flex-start;}
+        .align-items-center {align-items: center;}
+        .align-items-between {align-items: space-between;}
+
+        .text-left {text-align: left;}
+        .text-center {text-align: center;}
+        .text-right {text-align: right;}
+
+        .font-thin {font-weight: 100;}
+        .font-light {font-weight: 300;}
+        .font-regular {font-weight: 400;}
+        .font-medium {font-weight: 500;}
+        .font-semibol {font-weight: 500;}
+        .font-bold {font-weight: 700;}
+        .font-xtra-black {font-weight: 800;}
+        .font-black {font-weight: 900;}
+
+        .font-italic {font-style: italic;}
+
+        
+        /* Margins y axis */
+        .my-0 {margin-top: 0 !important; margin-bottom: 0 !important;}
+        .my-1 {margin-top: .25rem !important; margin-bottom: .25rem !important;}
+        .my-2 {margin-top: .5rem !important; margin-bottom: .5rem !important;}
+        .my-3 {margin-top: .75rem !important; margin-bottom: .75rem !important;}
+        .my-4 {margin-top: 1rem !important; margin-bottom: 1rem !important;}
+        .my-5 {margin-top: 1.25rem !important; margin-bottom: 1.25rem !important;}
+        .my-6 {margin-top: 1.5rem !important; margin-bottom: 1.5rem !important;}
+        .my-7 {margin-top: 1.75rem !important; margin-bottom: 1.75rem !important;}
+        .my-8 {margin-top: 2rem !important; margin-bottom: 2rem !important;}
+        .my-9 {margin-top: 2.25rem !important; margin-bottom: 2.25rem !important;}
+        .my-10 {margin-top: 2.5rem !important; margin-bottom: 2.5rem !important;}
+
+        /* Margins x axis */
+        .mx-0 {margin-left: 0 !important; margin-right: 0 !important;}
+        .mx-1 {margin-left: .25rem !important; margin-right: .25rem !important;}
+        .mx-2 {margin-left: .5rem !important; margin-right: .5rem !important;}
+        .mx-3 {margin-left: .75rem !important; margin-right: .75rem !important;}
+        .mx-4 {margin-left: 1rem !important; margin-right: 1rem !important;}
+        .mx-5 {margin-left: 1.25rem !important; margin-right: 1.25rem !important;}
+        .mx-6 {margin-left: 1.5rem !important; margin-right: 1.5rem !important;}
+        .mx-7 {margin-left: 1.75rem !important; margin-right: 1.75rem !important;}
+        .mx-8 {margin-left: 2rem !important; margin-right: 2rem !important;}
+        .mx-9 {margin-left: 2.25rem !important; margin-right: 2.25rem !important;}
+        .mx-10 {margin-left: 2.5rem !important; margin-right: 2.5rem !important;}
+
+        /* Margins all axis */
+        .m-0 {margin: 0 !important;}
+        .m-1 {margin: .25rem !important;}
+        .m-2 {margin: .5rem !important;}
+        .m-3 {margin: .75rem !important;}
+        .m-4 {margin: 1rem !important;}
+        .m-5 {margin: 1.25rem !important;}
+        .m-6 {margin: 1.5rem !important;}
+        .m-7 {margin: 1.75rem !important;}
+        .m-8 {margin: 2rem !important;}
+        .m-9 {margin: 2.25rem !important;}
+        .m-10 {margin: 2.5rem !important;}
+
+        /* Margin top */
+        .mt-0 {margin-top: 0 !important;}
+        .mt-1 {margin-top: .25rem !important;}
+        .mt-2 {margin-top: .5rem !important;}
+        .mt-3 {margin-top: .75rem !important;}
+        .mt-4 {margin-top: 1rem !important;}
+        .mt-5 {margin-top: 1.25rem !important;}
+        .mt-6 {margin-top: 1.5rem !important;}
+        .mt-7 {margin-top: 1.75rem !important;}
+        .mt-8 {margin-top: 2rem !important;}
+        .mt-9 {margin-top: 2.25rem !important;}
+        .mt-10 {margin-top: 2.5rem !important;}
+        
+        /* Margin Bottom */
+        .mb-0 {margin-bottom: 0 !important;}
+        .mb-1 {margin-bottom: .25rem !important;}
+        .mb-2 {margin-bottom: .5rem !important;}
+        .mb-3 {margin-bottom: .75rem !important;}
+        .mb-4 {margin-bottom: 1rem !important;}
+        .mb-5 {margin-bottom: 1.25rem !important;}
+        .mb-6 {margin-bottom: 1.5rem !important;}
+        .mb-7 {margin-bottom: 1.75rem !important;}
+        .mb-8 {margin-bottom: 2rem !important;}
+        .mb-9 {margin-bottom: 2.25rem !important;}
+        .mb-10 {margin-bottom: 2.5rem !important;}
+
+        /* Margin left */
+        .ml-0 {margin-left: 0 !important;}
+        .ml-1 {margin-left: .25rem !important;}
+        .ml-2 {margin-left: .5rem !important;}
+        .ml-3 {margin-left: .75rem !important;}
+        .ml-4 {margin-left: 1rem !important;}
+        .ml-5 {margin-left: 1.25rem !important;}
+        .ml-6 {margin-left: 1.5rem !important;}
+        .ml-7 {margin-left: 1.75rem !important;}
+        .ml-8 {margin-left: 2rem !important;}
+        .ml-9 {margin-left: 2.25rem !important;}
+        .ml-10 {margin-left: 2.5rem !important;}
+
+        /* Margin Right */
+        .mr-0 {margin-right: 0 !important;}
+        .mr-1 {margin-right: .25rem !important;}
+        .mr-2 {margin-right: .5rem !important;}
+        .mr-3 {margin-right: .75rem !important;}
+        .mr-4 {margin-right: 1rem !important;}
+        .mr-5 {margin-right: 1.25rem !important;}
+        .mr-6 {margin-right: 1.5rem !important;}
+        .mr-7 {margin-right: 1.75rem !important;}
+        .mr-8 {margin-right: 2rem !important;}
+        .mr-9 {margin-right: 2.25rem !important;}
+        .mr-10 {margin-right: 2.5rem !important;}
+
+        /* Padding y axis */
+        .py-0 {padding-top: 0 !important; padding-bottom: 0 !important;}
+        .py-1 {padding-top: .25rem !important; padding-bottom: .25rem !important;}
+        .py-2 {padding-top: .5rem !important; padding-bottom: .5rem !important;}
+        .py-3 {padding-top: .75rem !important; padding-bottom: .75rem !important;}
+        .py-4 {padding-top: 1rem !important; padding-bottom: 1rem !important;}
+        .py-5 {padding-top: 1.25rem !important; padding-bottom: 1.25rem !important;}
+        .py-6 {padding-top: 1.5rem !important; padding-bottom: 1.5rem !important;}
+        .py-7 {padding-top: 1.75rem !important; padding-bottom: 1.75rem !important;}
+        .py-8 {padding-top: 2rem !important; padding-bottom: 2rem !important;}
+        .py-9 {padding-top: 2.25rem !important; padding-bottom: 2.25rem !important;}
+        .py-10 {padding-top: 2.5rem !important; padding-bottom: 2.5rem !important;}
+        
+        /* Padding x axis */
+        .px-0 {padding-left: 0 !important; padding-right: 0 !important;}
+        .px-1 {padding-left: .25rem !important; padding-right: .25rem !important;}
+        .px-2 {padding-left: .5rem !important; padding-right: .5rem !important;}
+        .px-3 {padding-left: .75rem !important; padding-right: .75rem !important;}
+        .px-4 {padding-left: 1rem !important; padding-right: 1rem !important;}
+        .px-5 {padding-left: 1.25rem !important; padding-right: 1.25rem !important;}
+        .px-6 {padding-left: 1.5rem !important; padding-right: 1.5rem !important;}
+        .px-7 {padding-left: 1.75rem !important; padding-right: 1.75rem !important;}
+        .px-8 {padding-left: 2rem !important; padding-right: 2rem !important;}
+        .px-9 {padding-left: 2.25rem !important; padding-right: 2.25rem !important;}
+        .px-10 {padding-left: 2.5rem !important; padding-right: 2.5rem !important;}
+        
+        /* Padding all axis */
+        .p-0 {padding: 0 !important;}
+        .p-2 {padding: .5rem !important;}
+        .p-3 {padding: .75rem !important;}
+        .p-4 {padding: 1rem !important;}
+        .p-5 {padding: 1.25rem !important;}
+        .p-6 {padding: 1.5rem !important;}
+        .p-7 {padding: 1.75rem !important;}
+        .p-8 {padding: 2rem !important;}
+        .p-9 {padding: 2.25rem !important;}
+        .p-10 {padding: 2.5rem !important;}
+        
+        /* Padding top */
+        .pt-0 {padding-top: 0 !important;}
+        .pt-1 {padding-top: .25rem !important;}
+        .pt-2 {padding-top: .5rem !important;}
+        .pt-3 {padding-top: .75rem !important;}
+        .pt-4 {padding-top: 1rem !important;}
+        .pt-5 {padding-top: 1.25rem !important;}
+        .pt-6 {padding-top: 1.5rem !important;}
+        .pt-7 {padding-top: 1.75rem !important;}
+        .pt-8 {padding-top: 2rem !important;}
+        .pt-9 {padding-top: 2.25rem !important;}
+        .pt-10 {padding-top: 2.5rem !important;}
+        
+        /* Padding Bottom */
+        .pb-0 {padding-bottom: 0 !important;}
+        .pb-1 {padding-bottom: .25rem !important;}
+        .pb-2 {padding-bottom: .5rem !important;}
+        .pb-3 {padding-bottom: .75rem !important;}
+        .pb-4 {padding-bottom: 1rem !important;}
+        .pb-5 {padding-bottom: 1.25rem !important;}
+        .pb-6 {padding-bottom: 1.5rem !important;}
+        .pb-7 {padding-bottom: 1.75rem !important;}
+        .pb-8 {padding-bottom: 2rem !important;}
+        .pb-9 {padding-bottom: 2.25rem !important;}
+        .pb-10 {padding-bottom: 2.5rem !important;}
+
+        /* Padding left */
+        .pl-0 {padding-left: 0 !important;}
+        .pl-1 {padding-left: .25rem !important;}
+        .pl-2 {padding-left: .5rem !important;}
+        .pl-3 {padding-left: .75rem !important;}
+        .pl-4 {padding-left: 1rem !important;}
+        .pl-5 {padding-left: 1.25rem !important;}
+        .pl-6 {padding-left: 1.5rem !important;}
+        .pl-7 {padding-left: 1.75rem !important;}
+        .pl-8 {padding-left: 2rem !important;}
+        .pl-9 {padding-left: 2.25rem !important;}
+        .pl-10 {padding-left: 2.5rem !important;}
+
+        /* Padding Right */
+        .pr-0 {padding-right: 0 !important;}
+        .pr-1 {padding-right: .25rem !important;}
+        .pr-2 {padding-right: .5rem !important;}
+        .pr-3 {padding-right: .75rem !important;}
+        .pr-4 {padding-right: 1rem !important;}
+        .pr-5 {padding-right: 1.25rem !important;}
+        .pr-6 {padding-right: 1.5rem !important;}
+        .pr-7 {padding-right: 1.75rem !important;}
+        .pr-8 {padding-right: 2rem !important;}
+        .pr-9 {padding-right: 2.25rem !important;}
+        .pr-10 {padding-right: 2.5rem !important;}
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .container > .row {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+            padding-left: var(--gap);
+            padding-right: var(--gap);
+            flex: 0 0 auto;
+        }
+
+        .col-1 { width: calc(var(--col-width) * 1); }
+        .col-2 { width: calc(var(--col-width) * 2); }
+        .col-3 { width: calc(var(--col-width) * 3); }
+        .col-4 { width: calc(var(--col-width) * 4); }
+        .col-5 { width: calc(var(--col-width) * 5); }
+        .col-6 { width: calc(var(--col-width) * 6); }
+        .col-7 { width: calc(var(--col-width) * 7); }
+        .col-8 { width: calc(var(--col-width) * 8); }
+        .col-9 { width: calc(var(--col-width) * 9); }
+        .col-10 { width: calc(var(--col-width) * 10); }
+        .col-11 { width: calc(var(--col-width) * 11); }
+        .col-12 { width: calc(var(--col-width) * 12); }
+        .w-25 {width: 25%;}
+        .w-33 {width: 33.333364%;}
+        .w-50 {width: 50%;}
+        .w-66 {width: 66.66664%;}
+        .w-75 {width: 75%;}
+        .w-100 {width: 100%;}
+
+
+        body {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        .mainContainer {
+            position: relative;
+            width: 100%;
+        }
+        
+        .mainContent {
+            background-color: #fff;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.06);
+        }
+        .cta-button {
+            position: relative;
+            display: inline-block;
+            padding: 1rem 3rem;
+            border-radius: 3rem;
+        }
+        .cta-button:hover {opacity: 0.9;}
+        .border {border: 1px solid #ccc;}
+        .border-top {border-top: 1px solid #ccc;}
+        .border-left {border-left: 1px solid #ccc;}
+        .border-right {border-right: 1px solid #ccc;}
+        .border-bottom {border-bottom: 1px solid #ccc;}
+        .border-top-0 {border-top: 0;}
+        .border-right-0 {border-right: 0;}
+        .border-left-0 {border-left: 0;}
+        .border-bottom-0 {border-bottom: 0;}
+        
+        .uppercase {text-transform: uppercase;}
+        .capitalize {text-transform: capitalize;}
+        .lowercase {text-transform: lowercase;}
+        .text-underline {text-decoration: underline;}
+
+        table {
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: .7rem;
+            border-bottom: 1px solid #ccc;
+        }
+        table tbody tr:nth-child(even) {background-color: #e6e6e6;}
+        table tr:last-child td {border-bottom: 0;}
+        p:not(:last-child) {margin-bottom: 1rem;}
+        .card-box {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .card-box img {margin-bottom: 1rem; min-height: 70px;}
+
+        .contact-card {
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #F5F5F5;
+            display: flex;
+            padding: .8rem .8rem .6rem .8rem;
+            margin-bottom: 1.25rem;
+        }
+        .contact-card:hover {border-color: black; opacity: .9;}
+        .contact-card .user-icon {
+            margin-right: 1rem;
+        }
+        .contact-card p {
+            font-size: 15px;
+            margin-bottom: .3rem;
+        }
+        .contact-card p a {
+            display: inline-flex;
+        }
+        .contact-card p a .icon {
+            width: 25px;
+        }
+        .contact-card p:last-child {margin-bottom: 0;}
+        .social-media a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+            margin: 0 .25rem;
+            border-radius: .25rem;
+        }
+        .social-media a:hover {
+            background-color: black;
+        }
+        .companyInfo .address {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .companyInfo .address p { 
+            display: flex; 
+            margin-bottom: .25rem; 
+            margin-right: 1rem;
+            align-items: center;
+            font-size: 14px;
+        }
+        .companyInfo .address p .icon {width: 22px; height: 22px;}
+    </style>
+
+</head>
+<body>
+
+    <div class="mainContainer bgBaseColor pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <main class="mainContent whiteBgColor behindShadow">
+                    <div class="header">
+                        <a href="javascript:;" class="d-inline-block">
+                            <img src="otology_header.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="slider-banner">
+                        <a href="javscript:void()">
+                            <img src="slider-banner.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="text-center py-6">
+                        <img src="doors-open-tomorrow.jpg" alt="" />
+                    </div>
+                    <div class="content-box px-5 py-3 text-center font-family-barlow mb-5">
+                        <h2 class="orange-color mb-5">Strictly E-badge protocol implemented.</h2>
+                        <p class="fz-26 px-10 mb-8">
+                            Don't forgot to register and login to the Dubai Otology Mobile App to generate your E-badge
+                        </p>
+                        <a href="javascript:void()" class="cta-button orange-bg-color white-color fz-30 line-height-normal font-bold">Register Now</a>
+                    </div>
+                    <div class="p-5">
+                        <div class="location-container py-3 font-family-barlow" style="background-color: #f8f8f8;">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="address p-3 pb-0">
+                                        <h4 class="mb-1 fz-22">Event Location</h4>
+                                        <p class="fz-20">Dubai World Trade Center, Sheikh Rashid Hall</p>
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <div class="g-map">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.0574360140263!2d55.372377715334046!3d25.20128548389425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d380cf9af91%3A0xb6254276d965b3d4!2sINDEX%20Conferences%20%26%20Exhibitions%20Organisation%20Establishment!5e0!3m2!1sen!2sae!4v1641560473693!5m2!1sen!2sae" width="100%" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-5 mb-3 py-3 pb-0">
+                        <div class="tableHeaer p-4 black-bg-color text-center">
+                            <h4 class="orange-color uppercase">Exhibition & Conference Timings</h4>
+                        </div>
+                        <div class="row">
+                            <table class="w-50 border" style="border-right-color: #EC7601;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3" class="fz-18 orange-color">Exhibition Timings</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10 Oct 2021</td>
+                                        <td>Sunday</td>
+                                        <td>10:00 - 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Oct 2021</td>
+                                        <td>Monday</td>
+                                        <td>10:00 - 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Oct 2021</td>
+                                        <td>Tuesday</td>
+                                        <td>10:00 - 18:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="w-50 border" style="border-left-color: #EC7601;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3" class="fz-18 orange-color">Conference Timings</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10 Oct 2021</td>
+                                        <td>Sunday</td>
+                                        <td>10:00 - 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Oct 2021</td>
+                                        <td>Monday</td>
+                                        <td>10:00 - 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Oct 2021</td>
+                                        <td>Tuesday</td>
+                                        <td>10:00 - 18:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="location-container px-4 py-6 light-grey-bg-color font-family-barlow">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="coronaIcon">
+                                        <img src="corona_icon.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="covid-info mb-3">
+                                        <h3 class="orange-color">Covid - 19 Safety Guidelines</h3>
+                                        <p>
+                                            These guidelines have taken into account the mandatory requirements as prescribed by the relevant government authorities, the Dubai World Trade Centre and the suppliers operating during the full duration of the event.
+                                        </p>
+                                        <a href="javascript:;" class="orange-color d-inline-block text-underline font-medium mb-5">View all safety measures and guidelines for Dubai Otology 2021</a>
+                                        <h5 class="uppercase fz-18 orange-color">Don't forget the basics</h5>
+                                    </div>
+                                </div>
+                                <div class="covid-precaution mt-10">
+                                    <div class="row">
+                                        <div class="col-4 border-right border-bottom">
+                                            <div class="card-box">
+                                                <img src="mask.svg" alt="">
+                                                <p>Mandatory to wear Mask at all times</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 border-right border-bottom">
+                                            <div class="card-box">
+                                                <img src="distance.svg" alt="">
+                                                <p>Maintain Social Distancing</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 border-bottom">
+                                            <div class="card-box">
+                                                <img src="hand-wash.svg" alt="">
+                                                <p>Sanitize Regularly</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 border-right">
+                                            <div class="card-box">
+                                                <img src="avoid-dirstibution.svg" alt="">
+                                                <p>Avoid distribution of business cards / flyers</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 border-right">
+                                            <div class="card-box">
+                                                <img src="hand-shake.svg" alt="">
+                                                <p>Avoid physical contact (i.e. shaking hand, hugging)</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="card-box">
+                                                <img src="together.svg" alt="">
+                                                <p>Adhere to maximum capacities in all areas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-5 mb-3 py-3 pb-0 mb-8">
+                        <div class="mobile-appLinks text-center">
+                            <img src="mobile-ui.png" alt="" class="mb-5">
+                            <div class="row">
+                                <div class="col-6 text-center">
+                                    <a href="javascript:;">
+                                        <img src="app-store-bar-code.png" alt="" />
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="javascript:;">
+                                        <img src="google-play.png" alt="" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="partners py-6 text-center px-5 border-bottom border-top  mb-4">
+                        <img src="partners.png" alt="">
+                    </div>
+                    <div class="contact-details px-5 pt-5 pb-1">
+                        <p class="text-center mb-6">
+                            Contact the <strong>Dubai Otology Team</strong> for more information:
+                        </p>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="contact-card">
+                                    <div class="user-icon">
+                                        <img src="user-icon.png" alt="">
+                                    </div>
+                                    <div class="user-detail">
+                                        <p>
+                                            <strong>Joy Ogunneye</strong>
+                                            |  Marketing Executive
+                                        </p>
+                                        <p>
+                                            <a href="tel:+971529842378">
+                                                <span class="icon"><img src="phone.svg" alt=""></span>
+                                                <span>+971 52 984 2378</span>
+                                            </a>
+                                        </p>
+                                        <p>
+                                            <a href="mailto:registration@dubaioto.com">
+                                                <span class="icon"><img src="email.svg" alt=""></span>
+                                                <span>registration@dubaioto.com</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="contact-card">
+                                    <div class="user-icon">
+                                        <img src="user-icon.png" alt="">
+                                    </div>
+                                    <div class="user-detail">
+                                        <p>
+                                            <strong>Joy Ogunneye</strong>
+                                            |  Marketing Executive
+                                        </p>
+                                        <p>
+                                            <a href="tel:+971529842378">
+                                                <span class="icon"><img src="phone.svg" alt=""></span>
+                                                <span>+971 52 984 2378</span>
+                                            </a>
+                                        </p>
+                                        <p>
+                                            <a href="mailto:registration@dubaioto.com">
+                                                <span class="icon"><img src="email.svg" alt=""></span>
+                                                <span>registration@dubaioto.com</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-details px-2 mb-2">
+                        <div class="companyInfo" style="background-color: #f5f5f5;">
+                            <div class="header py-2 d-flex justify-content-between orange-bg-color white-color align-items-center px-4">
+                                <div class="left-content d-flex" style="max-width: 65%;">
+                                    <p class="mb-0 mr-3"><strong>#dubaiotology</strong></p>
+                                    <p class="mb-0 mr-3"><strong>#seeyouindubai</strong></p>
+                                </div>
+                                <div class="right-content">
+                                    <div class="social-media d-flex align-items-center">
+                                        <span class="mr-2">Stay Connected:</span>
+                                        <a href="javascript:;"><img src="facebook.svg" alt=""></a>
+                                        <a href="javascript:;"><img src="instagram.svg" alt=""></a>
+                                        <a href="javascript:;"><img src="twitter.svg" alt=""></a>
+                                        <a href="javascript:;"><img src="linkedin.svg" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 pb-2 d-flex align-items-center">
+                                <div class="index-logo" style="width: 50%;">
+                                    <img src="index-logo.svg" alt="">
+                                </div>
+                                <div class="companyDetail pl-3 ml-3 border-left">
+                                    <h5 class="mb-1">INDEX® Conferences & Exhibitions Organisation Est.</h5>
+                                    <p>(Member of INDEX Holding)</p>
+                                    <div class="address font-family-roboto-condensed">
+                                        <p>
+                                            <span class="icon"><img src="map-marker.svg" alt=""></span>
+                                            <span>Index Holding Headquarters, P.O. Box: 13636, Road #D-62, Opp. Nad Al Hamar, Dubai, UAE.</span>
+                                        </p>
+                                        <p>
+                                            <span class="icon"><img src="g-map.svg" alt=""></span>
+                                            <a href="javascript:;">G-Map</a>
+                                        </p>
+                                        <p>
+                                            <span class="icon"><img src="phone.svg" alt=""></span>
+                                            <a href="tel:+97145208888">+971 4 520 8888</a>
+                                        </p>
+                                        <p>
+                                            <span class="icon"><img src="fax.svg" alt=""></span>
+                                            <a href="tel:+97143384193">+971 4 338 4193</a>
+                                        </p>
+                                        <p>
+                                            <span class="icon"><img src="email.svg" alt=""></span>
+                                            <a href="tel:info@dubaioto.com">info@dubaioto.com</a>
+                                        </p>
+                                        <p>
+                                            <span class="icon"><img src="globe.svg" alt=""></span>
+                                            <a href="www.dubaioto.com">www.dubaioto.com</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footerContent mt-7 mb-3 text-center fz-14 font-family-roboto px-5">
+                <p class="mb-3">This E-flyer was sent by <strong>DUPHAT</strong></p>
+                <p>
+                    Remove from mailing list: In addition to administrative correspondence, we deliver news about the Event from time to time. If you wish to unsubscribe from the email list, please <a href="javascript:;"><u><strong>click here</strong></u></a> and you will not be included in future mailings. We recommend that you do not <u><strong>unsubscribe</strong></u> from this list so you do not miss important information about the Event.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>
